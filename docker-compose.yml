@@ -13,6 +13,7 @@ services:
       QUERY_ATTEMPTS: 1000
     volumes:
       - ./analysis:/analysis/
+      - ./partitioning:/partitioning/
       - ./migrations:/migrations/
       - ./migrations/init.sh:/docker-entrypoint-initdb.d/init.sh
       - steamdb-data:/var/lib/postgresql/data
