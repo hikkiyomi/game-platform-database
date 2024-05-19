@@ -10,7 +10,7 @@ services:
       PGDATA: "/var/lib/postgresql/data/pgdata"
       STEAMDB_VERSION: "1.0.0"
       USERS: "misha,egor,andrey,denis"
-      QUERY_ATTEMPTS: 10
+      QUERY_ATTEMPTS: 1000
     volumes:
       - ./analysis:/analysis/
       - ./migrations:/migrations/
