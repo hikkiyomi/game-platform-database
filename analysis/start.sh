@@ -20,23 +20,23 @@ if [ -z "$db" ]; then
     export db="postgres"
 fi
 
-# # DROP INDEXES IF EXIST
+# DROP INDEXES IF EXIST
 
-# psql -U "$user" -d "$db" -f "/analysis/indices/01_lots_drop_index.sql"
-# psql -U "$user" -d "$db" -f "/analysis/indices/02_user_inventories_drop_index.sql"
+psql -U "$user" -d "$db" -f "/analysis/indices/01_lots_drop_index.sql"
+psql -U "$user" -d "$db" -f "/analysis/indices/02_user_inventories_drop_index.sql"
 
-# # ANALYZE BEFORE INDEXING TABLES
+# ANALYZE BEFORE INDEXING TABLES
 
-# launch_analysis
+launch_analysis
 
-# # CREATE INDEXES
+# CREATE INDEXES
 
-# psql -U "$user" -d "$db" -f "/analysis/indices/01_lots_create_index.sql"
-# psql -U "$user" -d "$db" -f "/analysis/indices/02_user_inventories_create_index.sql"
+psql -U "$user" -d "$db" -f "/analysis/indices/01_lots_create_index.sql"
+psql -U "$user" -d "$db" -f "/analysis/indices/02_user_inventories_create_index.sql"
 
-# # ANALYZE AFTER INDEXING TABLES
+# ANALYZE AFTER INDEXING TABLES
 
-# launch_analysis
+launch_analysis
 
 # CREATE PARTITIONS
 
