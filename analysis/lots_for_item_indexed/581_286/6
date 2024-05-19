@@ -1,0 +1,8 @@
+                                                    QUERY PLAN                                                    
+------------------------------------------------------------------------------------------------------------------
+ Index Scan using lots_index on lots  (cost=0.41..8.43 rows=1 width=43) (actual time=0.029..0.051 rows=4 loops=1)
+   Index Cond: ((item_id = 581) AND (game_id = 286))
+ Planning Time: 0.251 ms
+ Execution Time: 0.083 ms
+(4 rows)
+

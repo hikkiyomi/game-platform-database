@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS communities (
+    id BIGSERIAL PRIMARY KEY,
+    game_id BIGINT REFERENCES games(id)
+);
+
+INSERT INTO communities (game_id)
+SELECT FLOOR(RANDOM() * (100000 - 1 + 1) + 1) FROM GENERATE_SERIES(1, 100000);

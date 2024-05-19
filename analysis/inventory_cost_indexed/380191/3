@@ -1,0 +1,13 @@
+                                                                        QUERY PLAN                                                                         
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=21.36..21.37 rows=1 width=32) (actual time=0.051..0.056 rows=1 loops=1)
+   ->  Nested Loop  (cost=0.84..21.35 rows=1 width=11) (actual time=0.043..0.048 rows=1 loops=1)
+         ->  Index Only Scan using user_inventories_index on user_inventories  (cost=0.42..4.46 rows=2 width=16) (actual time=0.032..0.036 rows=1 loops=1)
+               Index Cond: (user_id = 380191)
+               Heap Fetches: 0
+         ->  Index Scan using lots_index on lots  (cost=0.41..8.43 rows=1 width=27) (actual time=0.009..0.009 rows=1 loops=1)
+               Index Cond: ((item_id = user_inventories.item_id) AND (game_id = user_inventories.game_id))
+ Planning Time: 0.598 ms
+ Execution Time: 0.099 ms
+(9 rows)
+

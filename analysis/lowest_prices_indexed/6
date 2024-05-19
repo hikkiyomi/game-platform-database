@@ -1,0 +1,10 @@
+                                                   QUERY PLAN                                                   
+----------------------------------------------------------------------------------------------------------------
+ HashAggregate  (cost=1481.28..1536.44 rows=5516 width=48) (actual time=20.715..31.326 rows=52957 loops=1)
+   Group Key: item_id, game_id
+   Batches: 1  Memory Usage: 7697kB
+   ->  Seq Scan on lots  (cost=0.00..1067.59 rows=55159 width=27) (actual time=0.007..3.080 rows=55159 loops=1)
+ Planning Time: 0.279 ms
+ Execution Time: 33.170 ms
+(6 rows)
+

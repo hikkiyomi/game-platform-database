@@ -1,0 +1,18 @@
+                                                                   QUERY PLAN                                                                   
+------------------------------------------------------------------------------------------------------------------------------------------------
+ Aggregate  (cost=10300.89..10300.90 rows=1 width=32) (actual time=23.083..23.171 rows=1 loops=1)
+   ->  Hash Join  (cost=8681.70..10300.89 rows=1 width=11) (actual time=15.191..23.158 rows=1 loops=1)
+         Hash Cond: ((lots.item_id = user_inventories.item_id) AND (lots.game_id = user_inventories.game_id))
+         ->  Seq Scan on lots  (cost=0.00..1067.59 rows=55159 width=27) (actual time=0.009..3.079 rows=55159 loops=1)
+         ->  Hash  (cost=8681.67..8681.67 rows=2 width=16) (actual time=15.160..15.247 rows=1 loops=1)
+               Buckets: 1024  Batches: 1  Memory Usage: 9kB
+               ->  Gather  (cost=1000.00..8681.67 rows=2 width=16) (actual time=15.056..15.234 rows=1 loops=1)
+                     Workers Planned: 2
+                     Workers Launched: 2
+                     ->  Parallel Seq Scan on user_inventories  (cost=0.00..7681.47 rows=1 width=16) (actual time=9.220..12.335 rows=0 loops=3)
+                           Filter: (user_id = 380191)
+                           Rows Removed by Filter: 221150
+ Planning Time: 0.575 ms
+ Execution Time: 23.221 ms
+(14 rows)
+

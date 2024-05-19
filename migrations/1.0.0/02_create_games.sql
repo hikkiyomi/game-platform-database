@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS games (
+    id BIGSERIAL PRIMARY KEY,
+    bought_count INT
+);
+
+INSERT INTO games (bought_count)
+SELECT FLOOR(RANDOM() * (1000000 - 1 + 1) + 1) FROM GENERATE_SERIES(1, 100000);

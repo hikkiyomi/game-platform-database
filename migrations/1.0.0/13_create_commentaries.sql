@@ -1,0 +1,13 @@
+CREATE TABLE IF NOT EXISTS commentaries (
+    id BIGSERIAL PRIMARY KEY,
+    date DATE NOT NULL,
+    author_id BIGINT REFERENCES users(id),
+    content TEXT NOT NULL
+);
+
+INSERT INTO commentaries (date, author_id, content)
+SELECT
+    TIMESTAMP '2004-01-01 00:00:00' + RANDOM() * (TIMESTAMP '2024-01-01 00:00:00' - TIMESTAMP '2004-01-01 00:00:00'),
+    FLOOR(RANDOM() * (1000000 - 1 + 1) + 1),
+    MD5(RANDOM()::TEXT)
+FROM GENERATE_SERIES(1, 1000000);

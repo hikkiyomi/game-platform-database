@@ -1,0 +1,11 @@
+CREATE TABLE IF NOT EXISTS topics (
+    id BIGSERIAL PRIMARY KEY,
+    name TEXT NOT NULL,
+    author_id BIGINT REFERENCES users(id)
+);
+
+INSERT INTO topics (name, author_id)
+SELECT
+    MD5(RANDOM()::TEXT),
+    FLOOR(RANDOM() * (1000000 - 1 + 1) + 1)
+FROM GENERATE_SERIES(1, 100000);
