@@ -1,0 +1,42 @@
+SUMMARY OF ANALYSIS
+
+
+#### WITHOUT ANYTHING ####
+
+          INVENTORY_COST    LOTS_FOR_ITEM    LOWEST_PRICES
+
+worst         46710              1343             2603
+
+avg           46710              1343             2603
+
+best          46710              1343             2603
+
+
+#### AFTER INDEXING ####
+
+          INVENTORY_COST    LOTS_FOR_ITEM    LOWEST_PRICES
+
+worst          54                 8               2603
+
+avg            54                 8               2603
+
+best           54                 8               2603
+
+
+Huge decrease in total cost of tasks INVENTORY_COST and LOTS_FOR_ITEM.
+LOWEST_PRICES seems to be the same. Maybe that is because of INNER JOINs and something like that.
+
+
+#### AFTER PARTITIONING ####
+
+          INVENTORY_COST    LOTS_FOR_ITEM    LOWEST_PRICES
+
+worst         6038               299               4226
+
+avg           6038               299               4226
+
+best          6038               299               4226
+
+Big increase in total cost of each tasks.
+Seems like I didn't really pick good partition method / put bad parameters.
+
