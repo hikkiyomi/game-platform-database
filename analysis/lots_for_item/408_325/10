@@ -1,9 +1,0 @@
-                                            QUERY PLAN                                            
---------------------------------------------------------------------------------------------------
- Seq Scan on lots  (cost=0.00..1343.38 rows=1 width=43) (actual time=0.251..3.439 rows=4 loops=1)
-   Filter: ((item_id = 408) AND (game_id = 325))
-   Rows Removed by Filter: 55155
- Planning Time: 0.192 ms
- Execution Time: 3.469 ms
-(5 rows)
-
