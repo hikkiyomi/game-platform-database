@@ -24,7 +24,7 @@ best           54                 8               2603
 
 
 Huge decrease in total cost of tasks INVENTORY_COST and LOTS_FOR_ITEM.
-LOWEST_PRICES seems to be the same. Maybe that is because of INNER JOINs and something like that.
+LOWEST_PRICES seems to be the same. Maybe that is because of the query that still accesses each cell of database.
 
 
 #### AFTER PARTITIONING ####
@@ -37,6 +37,7 @@ avg           6038               299               4226
 
 best          6038               299               4226
 
+
 Big increase in total cost of each tasks.
-Seems like I didn't really pick good partition method / put bad parameters.
+Seems like I didn't really pick good partition method. Or I have put bad parameters.
 
