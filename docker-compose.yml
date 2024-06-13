@@ -1,4 +1,4 @@
-version: "2"
+version: "3.9"
 
 networks:
     patroniflow:
@@ -88,3 +88,36 @@ services:
             - ./partitioning:/partitioning/
             - ./migrations:/migrations/
             - ./migrations/init.sh:/docker-entrypoint-initdb.d/init.sh
+
+    grafana:
+        image: grafana/grafana
+        networks: [ patroniflow ]
+        environment:
+            - GF_SECURITY_ADMIN_PASSWORD=admin
+        ports:
+            - 3000:3000
+        volumes:
+            - grafana-storage:/var/lib/grafana
+
+    prometheus:
+        image: prom/prometheus
+        networks: [ patroniflow ]
+        ports:
+            - 9090:9090
+        volumes:
+            - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
+
+    postgres-exporter:
+        image: prometheuscommunity/postgres-exporter
+        networks: [ patroniflow ]
+        ports:
+            - 9187:9187
+        environment:
+            DATA_SOURCE_NAME: "postgresql://postgres:postgres@haproxy:5000/postgres?sslmode=disable"
+        links:
+            - haproxy
+            - prometheus
+
+volumes:
+    grafana-storage:
+
